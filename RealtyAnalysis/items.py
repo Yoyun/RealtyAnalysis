@@ -22,3 +22,17 @@ class XiaozhuItem(scrapy.Item):
     people = scrapy.Field()     # 宜住几人
     score = scrapy.Field()      # 评分
     comment = scrapy.Field()    # 点评数
+
+class LianjiaItem(scrapy.Item):
+    title_main = scrapy.Field()     # 主标题
+    title_sub = scrapy.Field()      # 副标题
+    price_total = scrapy.Field()    # 价格
+    price_unit = scrapy.Field()     # 单位
+    tips = scrapy.Field()           # 标签
+    area = scrapy.Field()           # 面积
+    house_type = scrapy.Field()     # 户型
+    storey = scrapy.Field()         # 楼层
+    direction = scrapy.Field()      # 朝向
+    court = scrapy.Field()          # 小区
+    location = scrapy.Field()       # 位置
+

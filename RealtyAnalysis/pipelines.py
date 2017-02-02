@@ -33,3 +33,29 @@ class XiaozhuPipeline(object):
 
     def close_spider(self, spider):
         pass
+
+class LianjiaPipeline(object):
+    def open_spider(self, spider):
+        self.client = pymongo.MongoClient('localhost', 27017)
+        self.db = self.client['realty']
+        self.data = self.db['lianjia']
+
+    def process_item(self, item, spider):
+        data = {
+            'title_main': item['title_main'],
+            'title_sub': item['title_sub'],
+            'price_total': item['price_total'],
+            'price_unit': item['price_unit'],
+            'tips': item['tips'],
+            'area': item['area'],
+            'house_type': item['house_type'],
+            'storey': item['storey'],
+            'direction': item['direction'],
+            'court': item['court'],
+            'location': item['location'],
+        }
+        self.data.insert_one(data)
+        return item
+
+    def close_spider(self, spider):
+        pass
